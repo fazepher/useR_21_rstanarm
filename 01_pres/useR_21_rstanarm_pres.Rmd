@@ -1,0 +1,49 @@
+---
+title: "Modelado bayesiano en R con {rstanarm}"
+subtitle: "Tutorial useR!21"  
+author: 
+  - "Fernando A. Zepeda Herrera"
+date: '7 de julio de 2021'
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: xaringan-themer.css
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_mono_accent(
+  base_color = "#44546A",
+  header_font_google = google_font("Noto Serif"),
+  text_font_google   = google_font("Montserrat"),
+  code_font_google   = google_font("Fira Mono")
+)
+```
+
+.center[
+## ¡Bienvenidos!
+```{r echo=FALSE, out.width="50%"}
+knitr::include_graphics("img/mascot_useR21.png")
+```
+]
+
+---
+class: center, middle
+
+# xaringan
+
+### /ʃæ.'riŋ.ɡæn/
+
+---
+class: inverse, center, middle
+
+# Get Started
+
