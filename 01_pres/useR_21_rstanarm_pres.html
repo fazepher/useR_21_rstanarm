@@ -25,21 +25,101 @@ class: center, middle, inverse, title-slide
 
 .center[
 ## ¡Bienvenidos!
-&lt;img src="img/mascot_useR21.png" width="50%" /&gt;
+&lt;div class="figure"&gt;
+&lt;img src="img/mascot_useR21.png" alt="useR!21 Conference Mascot" width="50%" /&gt;
+&lt;p class="caption"&gt;useR!21 Conference Mascot&lt;/p&gt;
+&lt;/div&gt;
 ]
 
 ---
-class: center, middle
+class: left
 
-# xaringan
+# Algo sobre mí
 
-### /ʃæ.'riŋ.ɡæn/
+- Mini CV para el final
+
+---
+class: left
+
+# Algo sobre ustedes
+
+- Pre requisitos 
+
+---
+class: left
+
+# Algo sobre hoy
+
+- Paradigma bayesiano
+
+- Una forma de pensar en regresiones
+
+- Un pequeño gran problema
+
+- Imaginar una solución
+
+- Manos a la obra
 
 ---
 class: inverse, center, middle
 
-# Get Started
+# Empecemos
 
+---
+class: inverse, center, middle
+
+# Paradigma bayesiano
+
+---
+
+# ¿Qué es la probabilidad?
+
+En matemáticas algo informales podemos hablar de una función no negativa que suma a 1. 
+
+Pero pensemos en la última vez que usamos el término probabilidad. 
+
+¿Cuál es la *probabilidad* de que esté lloviendo afuera de mi ventana?
+
+Lo más *probable* es que el equipo A gane. 
+
+¿Algunos otros ejemplos?
+
+---
+
+# ¿Qué es la probabilidad?
+
+Interpretaciones clásica o frecuentista más enfocadas en verla como una medida de *variabilidad*. 
+
+La interpretación bayesiana es que es una medida de incertidumbre. 
+
+**citar, por ejemplo, Mendoza, Bernardo, Gelman, Singurpuwalla, mi tesis**
+
+Por ello podemos asignar distribuciones de probabilidad a todas aquellas cantidades que desconocemos.
+
+---
+
+# La receta 
+
+El paradigma bayesiano entonces, al interpretar la probabilidad como medida de incertidumbre, en la práctica tiene, lo que **Gutiérrez Peña (2016)** la receta de la inferencia bayesiana: 
+
+&gt; ... encontrar la distribución condicional de todas aquellas cantidades de interés cuyo valor desconocemos dado el valor conocido de las variables observadas.
+
+
+---
+
+# Un propósito de inversión
+
+Pensemos en esta explicación de **Christian Robert (2007)**
+
+&gt; ... el propósito de un análisis estadístico es fundamentalmente un propósito de inversión, puesto que busca recuperar las causas— reducidas a los parámetros del mecanismo probabilístico de generación— de los efectos— resumidos por las observaciones. En otras palabras, al observar un fenómeno aleatorio dirigido por un parámetro `\(\theta\)`, los métodos estadísticos permiten deducir de estas observaciones una inferencia (esto es, un resumen, una caracterización) sobre `\(\theta\)` [...] La inferencia está basada entonces en la distribución de `\(\theta\)` condicional en `\(x\)` [...] llamada la distribución posterior...
+
+---
+
+# Teorema de Bayes
+
+`$$p(\theta | x) = \dfrac{p(x | \theta) p(\theta)}{p(x)}$$`
+
+4 componentes básicos. 
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
