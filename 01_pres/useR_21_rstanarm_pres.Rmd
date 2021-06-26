@@ -132,6 +132,99 @@ Pensemos en esta explicación de **Christian Robert (2007)**
 
 # Teorema de Bayes
 
-$$p(\theta | x) = \dfrac{p(x | \theta) p(\theta)}{p(x)}$$
+4 componentes básicos: 
 
-4 componentes básicos. 
+.pull-left[
+- **`r colorize("Posterior", "#44546A")`**
+]
+
+.pull-right[
+$$\color{#44546A}{p(\theta | x)} = \dfrac{p(x | \theta) p(\theta)}{p(x)}$$
+]
+
+<br>
+<br>
+<br>
+
+<hr>
+La distribución **`r colorize("posterior", "#44546A")`** es nuestro objetivo. 
+
+Recordemos la receta: queremos la distribución de aquello que desconocemos, el parámetro, dados los datos observados. 
+
+---
+
+# Teorema de Bayes
+
+4 componentes básicos: 
+
+.pull-left[
+- **`r colorize("Posterior", "#44546A")`**
+- **`r colorize("Inicial", "#F0A868")`**
+]
+
+.pull-right[
+$$\color{#44546A}{p(\theta | x)} = \dfrac{p(x | \theta) \color{#F0A868}{p(\theta)}}{p(x)}$$
+]
+
+
+<br>
+<br>
+<br>
+
+<hr>
+La distribución **`r colorize("inicial", "#F0A868")`**, también conocida como *`r colorize("a priori", "#F0A868")`*, es con lo que empezamos. 
+
+¿Qué sabemos sobre el parámetro *antes de observar los datos*? 
+
+---
+
+# Teorema de Bayes
+
+4 componentes básicos: 
+
+.pull-left[
+- **`r colorize("Posterior", "#44546A")`**
+- **`r colorize("Inicial", "#F0A868")`**
+- **`r colorize("Verosimilitud", "#87BBA2")`**
+]
+
+.pull-right[
+$$\color{#44546A}{p(\theta | x)} = \dfrac{\color{#87BBA2}{p(x | \theta)} \color{#F0A868}{p(\theta)}}{p(x)}$$
+]
+
+
+<br>
+<br>
+<br>
+
+<hr>
+La función de **`r colorize("verosimilitud", "#87BBA2")`** es la distribución condicional de los datos dado el parámetro, pero vista como función del parámetro y con los datos fijos. 
+
+Es la misma función utilizada para encontrar los estimadores de máxima verosimilitud en un contexto frecuentista. 
+
+---
+
+# Teorema de Bayes
+
+4 componentes básicos: 
+
+.pull-left[
+- **`r colorize("Posterior", "#44546A")`**
+- **`r colorize("Inicial", "#F0A868")`**
+- **`r colorize("Verosimilitud", "#87BBA2")`**
+- **`r colorize("Marginal", "#F45B69")`**
+]
+
+.pull-right[
+$$\color{#44546A}{p(\theta | x)} = \dfrac{\color{#87BBA2}{p(x | \theta)} \color{#F0A868}{p(\theta)}}{\color{#F45B69}{p(x)}}$$
+]
+
+<br>
+<br>
+<br>
+
+<hr>
+La distribución **`r colorize("marginal", "#F45B69")`** de los datos. Podemos pensar en ella como un promedio ponderado de las distintas verosimilitudes a través de los posibles valores del parámetro: 
+
+$${\color{#F45B69}{p(x)}} = \sum\limits_{i=1}^k p(x | \theta_i) p(\theta_i) \qquad\text{o}\qquad{\color{#F45B69}{p(x)}} = \int\limits_{\Theta} p(x | \theta) p(\theta) d\theta$$
+

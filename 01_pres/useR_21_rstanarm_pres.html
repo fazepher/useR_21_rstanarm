@@ -23,6 +23,8 @@ class: center, middle, inverse, title-slide
 
 
 
+
+
 .center[
 ## ¡Bienvenidos!
 &lt;div class="figure"&gt;
@@ -117,9 +119,102 @@ Pensemos en esta explicación de **Christian Robert (2007)**
 
 # Teorema de Bayes
 
-`$$p(\theta | x) = \dfrac{p(x | \theta) p(\theta)}{p(x)}$$`
+4 componentes básicos: 
 
-4 componentes básicos. 
+.pull-left[
+- **&lt;span style='color: #44546A;'&gt;Posterior&lt;/span&gt;**
+]
+
+.pull-right[
+`$$\color{#44546A}{p(\theta | x)} = \dfrac{p(x | \theta) p(\theta)}{p(x)}$$`
+]
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+&lt;hr&gt;
+La distribución **&lt;span style='color: #44546A;'&gt;posterior&lt;/span&gt;** es nuestro objetivo. 
+
+Recordemos la receta: queremos la distribución de aquello que desconocemos, el parámetro, dados los datos observados. 
+
+---
+
+# Teorema de Bayes
+
+4 componentes básicos: 
+
+.pull-left[
+- **&lt;span style='color: #44546A;'&gt;Posterior&lt;/span&gt;**
+- **&lt;span style='color: #F0A868;'&gt;Inicial&lt;/span&gt;**
+]
+
+.pull-right[
+`$$\color{#44546A}{p(\theta | x)} = \dfrac{p(x | \theta) \color{#F0A868}{p(\theta)}}{p(x)}$$`
+]
+
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+&lt;hr&gt;
+La distribución **&lt;span style='color: #F0A868;'&gt;inicial&lt;/span&gt;**, también conocida como *&lt;span style='color: #F0A868;'&gt;a priori&lt;/span&gt;*, es con lo que empezamos. 
+
+¿Qué sabemos sobre el parámetro *antes de observar los datos*? 
+
+---
+
+# Teorema de Bayes
+
+4 componentes básicos: 
+
+.pull-left[
+- **&lt;span style='color: #44546A;'&gt;Posterior&lt;/span&gt;**
+- **&lt;span style='color: #F0A868;'&gt;Inicial&lt;/span&gt;**
+- **&lt;span style='color: #87BBA2;'&gt;Verosimilitud&lt;/span&gt;**
+]
+
+.pull-right[
+`$$\color{#44546A}{p(\theta | x)} = \dfrac{\color{#87BBA2}{p(x | \theta)} \color{#F0A868}{p(\theta)}}{p(x)}$$`
+]
+
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+&lt;hr&gt;
+La función de **&lt;span style='color: #87BBA2;'&gt;verosimilitud&lt;/span&gt;** es la distribución condicional de los datos dado el parámetro, pero vista como función del parámetro y con los datos fijos. 
+
+Es la misma función utilizada para encontrar los estimadores de máxima verosimilitud en un contexto frecuentista. 
+
+---
+
+# Teorema de Bayes
+
+4 componentes básicos: 
+
+.pull-left[
+- **&lt;span style='color: #44546A;'&gt;Posterior&lt;/span&gt;**
+- **&lt;span style='color: #F0A868;'&gt;Inicial&lt;/span&gt;**
+- **&lt;span style='color: #87BBA2;'&gt;Verosimilitud&lt;/span&gt;**
+- **&lt;span style='color: #F45B69;'&gt;Marginal&lt;/span&gt;**
+]
+
+.pull-right[
+`$$\color{#44546A}{p(\theta | x)} = \dfrac{\color{#87BBA2}{p(x | \theta)} \color{#F0A868}{p(\theta)}}{\color{#F45B69}{p(x)}}$$`
+]
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+&lt;hr&gt;
+La distribución **&lt;span style='color: #F45B69;'&gt;marginal&lt;/span&gt;** de los datos. Podemos pensar en ella como un promedio ponderado de las distintas verosimilitudes a través de los posibles valores del parámetro: 
+
+`$${\color{#F45B69}{p(x)}} = \sum\limits_{i=1}^k p(x | \theta_i) p(\theta_i) \qquad\text{o}\qquad{\color{#F45B69}{p(x)}} = \int\limits_{\Theta} p(x | \theta) p(\theta) d\theta$$`
+
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
