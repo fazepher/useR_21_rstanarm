@@ -41,7 +41,7 @@ colorize <- function(x, color) {
 
 .center[
 ## ¡Bienvenidos!
-```{r echo=FALSE, out.width="50%", fig.cap="useR!21 Conference Mascot"}
+```{r echo=FALSE, out.width="50%"}
 knitr::include_graphics("img/mascot_useR21.png")
 ```
 ]
@@ -89,27 +89,66 @@ class: inverse, center, middle
 
 # ¿Qué es la probabilidad?
 
-En matemáticas algo informales podemos hablar de una función no negativa que suma a 1. 
+- En matemáticas algo informales podemos hablar de una función no negativa que suma a 1. 
 
-Pero pensemos en la última vez que usamos el término probabilidad. 
+- Pero pensemos en la última vez que usamos el término probabilidad. 
 
+--
+
+.center[
 ¿Cuál es la *probabilidad* de que esté lloviendo afuera de mi ventana?
 
-Lo más *probable* es que el equipo A gane. 
+![Un gif de lluvia](https://media.giphy.com/media/gg3AmWYDL0hb2/giphy.gif)
 
-¿Algunos otros ejemplos?
+]
+
 
 ---
 
 # ¿Qué es la probabilidad?
 
-Interpretaciones clásica o frecuentista más enfocadas en verla como una medida de *variabilidad*. 
+- En matemáticas algo informales podemos hablar de una función no negativa que suma a 1. 
 
-La interpretación bayesiana es que es una medida de incertidumbre. 
+- Pero pensemos en la última vez que usamos el término probabilidad. 
 
-**citar, por ejemplo, Mendoza, Bernardo, Gelman, Singurpuwalla, mi tesis**
+.center[
 
-Por ello podemos asignar distribuciones de probabilidad a todas aquellas cantidades que desconocemos.
+Lo más *probable* es que mi equipo gane. 
+
+![Don Ramón y Necaxa Fuente: Radio Futuro Chile](https://www.futuro.cl/wp-content/uploads/2019/08/don-ramon-necaxa-web-590x340.jpg)
+]
+
+---
+
+# ¿Qué es la probabilidad?
+
+- En matemáticas algo informales podemos hablar de una función no negativa que suma a 1. 
+
+- Pero pensemos en la última vez que usamos el término probabilidad. 
+
+.center[
+**¿Otros ejemplos?**
+
+```{r echo=FALSE, out.width="30%"}
+knitr::include_graphics("img/mascot_useR21.png")
+```
+]
+
+---
+
+# ¿Qué es la probabilidad?
+
+- Interpretaciones clásica o frecuentista más enfocadas en verla como una *medida de variabilidad*. 
+
+- La interpretación bayesiana es que es una **medida de incertidumbre**. 
+
+.center[
+```{r echo=FALSE, out.width="30%"}
+knitr::include_graphics("https://media.giphy.com/media/xUOxfjsW9fWPqEWouI/giphy.gif")
+```
+]
+
+- Por ello podemos asignar distribuciones de probabilidad a todas aquellas cantidades que desconocemos.
 
 ---
 
