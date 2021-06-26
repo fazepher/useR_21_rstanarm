@@ -28,6 +28,17 @@ style_mono_accent(
 )
 ```
 
+```{r colorize, include=FALSE, warning=FALSE}
+colorize <- function(x, color) {
+  if (knitr::is_latex_output()) {
+    sprintf("\\textcolor{%s}{%s}", color, x)
+  } else if (knitr::is_html_output()) {
+    sprintf("<span style='color: %s;'>%s</span>", color,
+      x)
+  } else x
+}
+```
+
 .center[
 ## ¡Bienvenidos!
 ```{r echo=FALSE, out.width="50%", fig.cap="useR!21 Conference Mascot"}
