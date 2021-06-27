@@ -19,6 +19,7 @@ options(htmltools.dir.version = FALSE, fig.retina = 3, warning = FALSE, message 
 library(emojifont)
 library(tidyverse)
 library(icons)
+load.fontawesome()
 ```
 
 ```{r xaringan-themer, include=FALSE, warning=FALSE}
@@ -288,23 +289,27 @@ Supongamos que estamos interesados en saber si un tratamiento médico es efectiv
 
 --
 
-Supongamos que $N=30$ y los pacientes tuvieron los siguientes resultados: 
-```{r corazones_pacientes, eval=FALSE, echo=FALSE}
+```{r corazones_pacientes, echo=FALSE, include=FALSE}
 # Y luego copiar y pegar en PPT
 set.seed(417526)
-pacientes <- tibble(Paciente = 1:30, Resultado = rbinom(30,1,0.65)) 
+pacientes <- tibble(Paciente = 1:30, Resultado = rbinom(30,1,0.65)) %>% 
+  mutate(Icono = emojifont::fontawesome("fa-heartbeat")) 
 
 pacientes %>%
   ggplot(aes(x=Paciente,colour = as.factor(Resultado))) + 
-  geom_text(y=1, label = fontawesome("fa-heartbeat"), family = "fontawesome-webfont", show.legend = FALSE, size = rel(5.5))  + 
+  geom_text(aes(y=1, label = Icono),  family = "fontawesome-webfont", 
+            show.legend = FALSE, size = rel(5.5))  + 
   scale_color_manual(values = c("#F0A868","#87BBA2")) +
   coord_cartesian(xlim = c(0, 31), ylim = c(1,1), expand = FALSE) + 
   theme_void()
 ```
-
+Supongamos que $N=30$ y los pacientes tuvieron los siguientes resultados:
 .center[
 ```{r echo=FALSE, out.width="90%"}
 knitr::include_graphics("img/pacientes_corazones.png")
 ```
 ]
 
+--
+
+Tenemos entonces `r sum(pacientes$Resultado)` éxitos del tratamiento contra `r nrow(pacientes) - sum(pacientes$Resultado)` fracasos. 
