@@ -15,7 +15,10 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-options(htmltools.dir.version = FALSE)
+options(htmltools.dir.version = FALSE, fig.retina = 3, warning = FALSE, message = FALSE)
+library(emojifont)
+library(tidyverse)
+library(icons)
 ```
 
 ```{r xaringan-themer, include=FALSE, warning=FALSE}
@@ -266,4 +269,42 @@ $$\color{#44546A}{p(\theta | x)} = \dfrac{\color{#87BBA2}{p(x | \theta)} \color{
 La distribución **`r colorize("marginal", "#F45B69")`** de los datos. Podemos pensar en ella como un promedio ponderado de las distintas verosimilitudes a través de los posibles valores del parámetro: 
 
 $${\color{#F45B69}{p(x)}} = \sum\limits_{i=1}^k p(x | \theta_i) p(\theta_i) \qquad\text{o}\qquad{\color{#F45B69}{p(x)}} = \int\limits_{\Theta} p(x | \theta) p(\theta) d\theta$$
+
+---
+
+# Un ejemplo médico
+
+Supongamos que estamos interesados en saber si un tratamiento médico es efectivo o no contra alguna enfermedad. 
+
+- Se tienen $N$ voluntarios en un ensayo clínico y se busca estimar la efectividad $\theta$, definida como el porcentaje de pacientes que responden satisfactoriamente al tratamiento. 
+
+--
+
+- Por ejemplo, si una persona responde al tratamiento, lo representamos como `r icon_style(fontawesome("heartbeat", style = "solid"), fill = "#87BBA2")`. 
+
+--
+
+- Si alguien *no* responde al tratamiento utilizamos otro color: `r icon_style(fontawesome("heartbeat", style = "solid"), fill = "#F0A868")`.
+
+--
+
+Supongamos que $N=30$ y los pacientes tuvieron los siguientes resultados: 
+```{r corazones_pacientes, eval=FALSE, echo=FALSE}
+# Y luego copiar y pegar en PPT
+set.seed(417526)
+pacientes <- tibble(Paciente = 1:30, Resultado = rbinom(30,1,0.65)) 
+
+pacientes %>%
+  ggplot(aes(x=Paciente,colour = as.factor(Resultado))) + 
+  geom_text(y=1, label = fontawesome("fa-heartbeat"), family = "fontawesome-webfont", show.legend = FALSE, size = rel(5.5))  + 
+  scale_color_manual(values = c("#F0A868","#87BBA2")) +
+  coord_cartesian(xlim = c(0, 31), ylim = c(1,1), expand = FALSE) + 
+  theme_void()
+```
+
+.center[
+```{r echo=FALSE, out.width="90%"}
+knitr::include_graphics("img/pacientes_corazones.png")
+```
+]
 
