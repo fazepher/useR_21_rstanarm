@@ -274,6 +274,18 @@ Supongamos que `\(N=30\)` y los pacientes tuvieron los siguientes resultados:
 --
 
 Tenemos entonces 20 éxitos del tratamiento contra 10 fracasos. 
+
+---
+
+# Un ejemplo médico
+
+¿Cómo modelar esta situación? 
+
+--
+
+El modelo más simple puede ser representar un modelo Bernoulli para cada paciente, con una probabilidad de éxito común, donde `\(X_i=1\)` significa que el paciente respondió satisfactoriamente al tratamiento y `\(X_i=0\)` que no lo hizo. 
+
+`$$X_i | \theta \sim Ber(\theta) \qquad p(X_i = x | \theta) = \theta^x(1-\theta)^{1-x}$$`
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

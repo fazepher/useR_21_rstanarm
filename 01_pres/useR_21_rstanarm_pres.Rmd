@@ -313,3 +313,15 @@ knitr::include_graphics("img/pacientes_corazones.png")
 --
 
 Tenemos entonces `r sum(pacientes$Resultado)` éxitos del tratamiento contra `r nrow(pacientes) - sum(pacientes$Resultado)` fracasos. 
+
+---
+
+# Un ejemplo médico
+
+¿Cómo modelar esta situación? 
+
+--
+
+El modelo más simple puede ser representar un modelo Bernoulli para cada paciente, con una probabilidad de éxito común, donde $X_i=1$ significa que el paciente respondió satisfactoriamente al tratamiento y $X_i=0$ que no lo hizo. 
+
+$$X_i | \theta \sim Ber(\theta) \qquad p(X_i = x | \theta) = \theta^x(1-\theta)^{1-x}$$
