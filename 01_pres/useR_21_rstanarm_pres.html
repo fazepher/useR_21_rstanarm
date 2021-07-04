@@ -283,9 +283,205 @@ Tenemos entonces 20 éxitos del tratamiento contra 10 fracasos.
 
 --
 
-El modelo más simple puede ser representar un modelo Bernoulli para cada paciente, con una probabilidad de éxito común, donde `\(X_i=1\)` significa que el paciente respondió satisfactoriamente al tratamiento y `\(X_i=0\)` que no lo hizo. 
+
+El modelo más simple puede ser representar un modelo Bernoulli para cada paciente, con una probabilidad de éxito común, 
 
 `$$X_i | \theta \sim Ber(\theta) \qquad p(X_i = x | \theta) = \theta^x(1-\theta)^{1-x}$$`
+
+donde `\(X_i=1\)` significa que el `\(i\)`-ésimo paciente respondió satisfactoriamente al tratamiento y `\(X_i=0\)` que no lo hizo. 
+
+---
+
+# Un ejemplo médico
+
+¿Cómo modelar esta situación? 
+
+- `$$X_i | \theta \sim Ber(\theta) \qquad p(X_i = x | \theta) = \theta^x(1-\theta)^{1-x}$$`
+
+Ya tenemos la verosimilitud, pero ¿cuál es nuestra distribución inicial? 
+
+--
+
+Queremos modelar una probabilidad que está entre 0 y 1. 
+
+-Si no sabemos nada más, antes de observar los datos, podemos pensar en asignar una distribución uniforme: 
+
+`$$\theta \sim U(0,1) \qquad p(\theta) = 1$$`
+
+-Pero un experto médico, con conocimiento tanto de la enfermedad como del tratamiento y su posible efectividad en la evolución de los pacientes, nos dice que *es poco probable* que este tratamiento sea más de 80% efectivo y lo *más probable* es que la efectividad esté al rededor del 45%. 
+
+&lt;img src="useR_21_rstanarm_pres_files/figure-html/unnamed-chunk-5-1.png" width="504" /&gt;
+
+---
+class: inverse, center, middle
+
+# Hamiltonian Monte Carlo
+
+
+
+
+---
+class: center, middle
+
+### Meta común en estadística
+
+`$$E_\theta[h(z)] = \int_\mathcal{Z} h(z)f(z)dz$$`
+
+--
+
+Pero, ¿qué pasa si no podemos calcular esta integral?
+
+--
+
+.pull-left[
+### Monte Carlo ###
+Muestras independientes
+`$$\hat{h}(z) = \dfrac{1}{N}\sum\limits_{i=1}^Nh(z_i)$$`
+]
+
+.pull-right[
+### MCMC ###
+Muestras correlacionadas
+`$$\tilde{h}(z) = \dfrac{1}{S}\sum\limits_{j=1}^Sh(z_j)$$`
+]
+
+---
+
+### Ley de los grandes números/Teoremas ergódicos
+
+.center[
+&lt;img src="img/LLN.png" width="80%" style="display: block; margin: auto;" /&gt;
+]
+
+
+---
+layout: false
+class: inverse, center, middle
+
+### Hablemos de física imaginaria
+
+---
+
+### Una densidad como una colina
+
+
+
+.center[
+&lt;img src="useR_21_rstanarm_pres_files/figure-html/unnamed-chunk-9-1.png" width="504" /&gt;
+]
+
+---
+
+### Una densidad como colina... o como tazón
+
+.pull-left[
+&lt;img src="useR_21_rstanarm_pres_files/figure-html/unnamed-chunk-10-1.png" width="504" /&gt;
+]
+
+.pull-right[
+&lt;img src="useR_21_rstanarm_pres_files/figure-html/unnamed-chunk-11-1.png" width="504" /&gt;
+]
+
+---
+
+### Partícula imaginaria
+
+.center[
+&lt;img src="useR_21_rstanarm_pres_files/figure-html/unnamed-chunk-12-1.png" width="504" /&gt;
+]
+
+---
+
+### Partícula imaginaria
+
+.pull-left[
+&lt;img src="useR_21_rstanarm_pres_files/figure-html/unnamed-chunk-13-1.png" width="504" /&gt;
+]
+
+.pull-right[
+&lt;img src="useR_21_rstanarm_pres_files/figure-html/unnamed-chunk-14-1.png" width="504" /&gt;
+]
+
+---
+
+### Espacio de fases
+
+Podemos observar un *espacio aumentado*, llamado el espacio de fases, para ver cómo el **momentum** y la **posición** de la partícula cambian mientras esta rueda. 
+
+.pull-left[
+&lt;img src="useR_21_rstanarm_pres_files/figure-html/unnamed-chunk-15-1.png" width="504" /&gt;
+]
+
+.pull-right[
+&lt;img src="useR_21_rstanarm_pres_files/figure-html/unnamed-chunk-16-1.png" width="504" /&gt;
+]
+
+---
+
+
+
+### Un proceso de dos etapas
+
+.pull-left[
+1. Empezando en una posición `\(\theta_0\)`, muestreamos un momentum aleatorio `\(m_0\)`
+    - Esto nos coloca en una órbita particular
+    - Define la trayectoria específica que la partícula seguiría de acuerdo a las ecuaciones de Hamilton
+
+2. Seguir la trayectoria por un tiempo `\(\tau\)` 
+    - Parar y registrar la posición `\(\theta_1\)` de nuestra partícula
+    
+]
+
+.pull-right[
+&lt;img src="useR_21_rstanarm_pres_files/figure-html/unnamed-chunk-18-1.png" width="504" /&gt;
+]
+
+---
+
+### Iteramos
+
+.pull-left[
+1. Empezando en una posición `\(\theta_0\)`, muestreamos un momentum aleatorio `\(m_0\)`
+    - Esto nos coloca en una órbita particular
+    - Define la trayectoria específica que la partícula seguiría de acuerdo a las ecuaciones de Hamilton
+
+2. Seguir la trayectoria por un tiempo `\(\tau\)` 
+    - Parar y registrar la posición `\(\theta_1\)` de nuestra partícula
+    
+]
+
+.pull-right[
+&lt;img src="useR_21_rstanarm_pres_files/figure-html/unnamed-chunk-19-1.png" width="504" /&gt;
+]
+
+---
+layout: false
+class: inverse, center, middle
+
+### Lo mágico es que... ¡funciona!
+
+---
+
+#### Es decir, este procedimiento resulta en una muestra válida de nuestra densidad original
+
+
+.pull-left[
+&lt;img src="useR_21_rstanarm_pres_files/figure-html/unnamed-chunk-20-1.png" width="504" /&gt;
+]
+
+.pull-right[
+&lt;img src="useR_21_rstanarm_pres_files/figure-html/unnamed-chunk-21-1.png" width="504" /&gt;
+]
+
+---
+
+### Podemos construir un sistema físico imaginario
+
+La constante normalizadora no depende de `\(\theta\)` por lo que no afecta la dinámica; podemos decir que la energía potencial es proporcional a la altura. 
+
+``$$-ln(f(\theta|y)) \propto -ln\left[L(\theta ; y)p(\theta)\right]$$``
+
+&lt;img src="useR_21_rstanarm_pres_files/figure-html/unnamed-chunk-22-1.png" width="40%" style="display: block; margin: auto;" /&gt;
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
